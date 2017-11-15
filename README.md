@@ -17,7 +17,7 @@ This library allows you to run your asynchronous code in an synchronous recursiv
         setTimeout(resolve.bind(null, random), random);
       });
     })
-    .then(function(){
+    .finished(function(){
       console.log("Loop has ended");
     });
 
@@ -32,7 +32,7 @@ You can catch an error in any iteration
         ? Promise.resolve(random)
         : Promise.reject("My error");
     })
-    .then(function(){
+    .finished(function(){
       console.log("Loop has ended");
     })
     .catch(function(e){
@@ -58,7 +58,7 @@ Another example
       return waitSecond;
     }
     var loop = AsyncLoop(returnPromiseForXSeconds(5))
-    .then(function(){
+    .finished(function(){
       console.log("Loop has ended");
     })
     .catch(function(e){
